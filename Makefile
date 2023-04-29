@@ -6,7 +6,7 @@
 #    By: ggiboury <ggiboury@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/24 18:49:17 by ggiboury          #+#    #+#              #
-#    Updated: 2023/04/29 17:48:30 by ggiboury         ###   ########.fr        #
+#    Updated: 2023/04/29 18:48:04 by ggiboury         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,7 @@ RED=\033[0;31m
 
 #LIBMLX 
 
-all :fclean re 
+all : $(NAME)
 
 lib:
 	@if [ ! -f libft.a ]; then \
@@ -123,4 +123,4 @@ test : $(NAME)
 #	./so_long_bonus maps/blackhole.ber
 
 testb: bonus
-	./so_long_bonus maps/OmegaMap.ber
+	./so_long_bonus maps/small.ber

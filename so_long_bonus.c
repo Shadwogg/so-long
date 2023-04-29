@@ -6,7 +6,7 @@
 /*   By: ggiboury <ggiboury@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 17:47:13 by ggiboury          #+#    #+#             */
-/*   Updated: 2023/04/29 17:48:09 by ggiboury         ###   ########.fr       */
+/*   Updated: 2023/04/29 18:50:34 by ggiboury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,16 @@ void	ft_flood_bonus(t_case ***map, t_node **visited, int x, int y)
 	}
 	if (!map[y - 1][x]->is_wall && !is_enemy(map[y - 1][x]->ent)
 		&& !is_visited(*visited, x, y - 1))
-		ft_flood(map, visited, x, y - 1);
+		ft_flood_bonus(map, visited, x, y - 1);
 	if (!map[y + 1][x]->is_wall && !is_enemy(map[y + 1][x]->ent)
 		&& !is_visited(*visited, x, y + 1))
-		ft_flood(map, visited, x, y + 1);
+		ft_flood_bonus(map, visited, x, y + 1);
 	if (!map[y][x - 1]->is_wall && !is_enemy(map[y][x - 1]->ent)
 		&& !is_visited(*visited, x - 1, y))
-		ft_flood(map, visited, x - 1, y);
+		ft_flood_bonus(map, visited, x - 1, y);
 	if (!map[y][x + 1]->is_wall && !is_enemy(map[y][x + 1]->ent)
 		&& !is_visited(*visited, x + 1, y))
-		ft_flood(map, visited, x + 1, y);
+		ft_flood_bonus(map, visited, x + 1, y);
 }
 
 void	my_hooks_bonus(void *game)

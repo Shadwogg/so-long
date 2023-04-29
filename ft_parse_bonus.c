@@ -6,7 +6,7 @@
 /*   By: ggiboury <ggiboury@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 18:25:11 by ggiboury          #+#    #+#             */
-/*   Updated: 2023/04/26 19:41:22 by ggiboury         ###   ########.fr       */
+/*   Updated: 2023/04/29 18:47:37 by ggiboury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	map_is_possible_bonus(t_case ***map, t_entity *p, int nb_coin)
 	int		res;
 
 	visited = NULL;
+	print_map(map);
 	ft_flood_bonus(map, &visited, p->coo[0] / 64, p->coo[1] / 64);
 	if (visited == NULL)
 	{
