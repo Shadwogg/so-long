@@ -6,7 +6,7 @@
 /*   By: ggiboury <ggiboury@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:58:19 by ggiboury          #+#    #+#             */
-/*   Updated: 2023/04/29 18:16:18 by ggiboury         ###   ########.fr       */
+/*   Updated: 2023/05/02 20:03:02 by ggiboury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,6 @@ void	update_ct(t_game *g, char c)
 int	is_enemy(t_entity *ent)
 {
 	if (ent != NULL)
-	{
-		printf("%c \n", ent->n);
 		return (ent->n == 'M');
-	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ggiboury <ggiboury@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 18:25:11 by ggiboury          #+#    #+#             */
-/*   Updated: 2023/04/29 18:47:37 by ggiboury         ###   ########.fr       */
+/*   Updated: 2023/05/02 20:02:06 by ggiboury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	map_is_possible_bonus(t_case ***map, t_entity *p, int nb_coin)
 	int		res;
 
 	visited = NULL;
-	print_map(map);
 	ft_flood_bonus(map, &visited, p->coo[0] / 64, p->coo[1] / 64);
 	if (visited == NULL)
 	{
@@ -82,21 +81,21 @@ t_case	***init_map_bonus(char **input, int y, int x)
 
 	if (input == NULL || *input == NULL)
 		return (NULL);
-	map = malloc((y + 1) * sizeof(t_case **));
+	map = malloc((y + 1) * sizeof(t_case *));
 	if (map == NULL)
 		free_print_error(input, "Malloc error");
 	map[y--] = NULL;
 	while (y >= 0)
 	{
-		map[y] = malloc((x + 1) * sizeof(t_case **));
+		map[y] = malloc((x + 1) * sizeof(t_case));
 		if (map[y] == NULL)
-			malloc_error_map(map, x, y + 1);
+			malloc_error_map(map, y, input);
 		ct = -1;
 		while (++ct < x)
 		{
 			map[y][ct] = init_case(input[y][ct], ct, y);
 			if (map[y][ct] == NULL || !case_is_valid_bonus(map[y][ct]))
-				malloc_error_map(map, x, y);
+				free_boxes(map + y, ct, map[y][ct] == NULL, input);
 		}
 		map[y--][x] = NULL;
 	}

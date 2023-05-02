@@ -6,7 +6,7 @@
 /*   By: ggiboury <ggiboury@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 19:41:22 by ggiboury          #+#    #+#             */
-/*   Updated: 2023/04/26 19:37:57 by ggiboury         ###   ########.fr       */
+/*   Updated: 2023/05/02 19:48:13 by ggiboury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	start(t_case ***map, t_entity *ents)
 	mlx_loop(game.mlx);
 	errno = 0;
 	free_game(game);
-	system("leaks so_long");
 }
 
 int	main(int argc, char **argv)

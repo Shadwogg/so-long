@@ -6,7 +6,7 @@
 /*   By: ggiboury <ggiboury@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 18:43:43 by ggiboury          #+#    #+#             */
-/*   Updated: 2023/04/29 17:57:52 by ggiboury         ###   ########.fr       */
+/*   Updated: 2023/05/02 19:37:29 by ggiboury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ void			test_textures(t_game *g);
 /***************************** UTILS *****************************/
 
 void			free_append_tab(char **tab, char *s, char **new_tab);
+void			free_boxes(t_case ***map, int x, int b, char **input);
 void			free_entities(t_game g);
 void			free_game(t_game g);
 void			free_map(t_case ***map);
@@ -109,7 +110,7 @@ void			free_nodes(t_node *v);
 void			free_print_error(char **str, char *s);
 void			free2_print_error(t_game *g, char *s);
 char			**free_tab_str(char **tab);
-void			malloc_error_map(t_case ***map, int x, int y);
+void			malloc_error_map(t_case ***map, int y, char **input);
 
 char			get_direction(int c[2]);
 t_entity		*get_entity(t_entity *ents, char c);

@@ -6,7 +6,7 @@
 #    By: ggiboury <ggiboury@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/24 18:49:17 by ggiboury          #+#    #+#              #
-#    Updated: 2023/04/29 18:48:04 by ggiboury         ###   ########.fr        #
+#    Updated: 2023/05/02 20:09:55 by ggiboury         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,8 +101,6 @@ $(NAME) : lib
 re : fclean $(NAME)
 
 clean :
-#	@rm -f $(OBJS)
-	/bin/rm -f libft.a
 	make -C $(LIBFT_DIR) clean
 
 fclean : clean
@@ -110,6 +108,8 @@ fclean : clean
 		echo "Removing LIBMLX";\
 		/bin/rm -rf $(LIBMLX);\
 	fi
+	@/bin/rm -f libft.a
+	@/bin/rm -f libmlx42.a
 	@/bin/rm -f $(NAME)
 	@/bin/rm -f $(NAME_BONUS)
 
@@ -118,9 +118,12 @@ bonus : lib
 
 test : $(NAME)
 	./so_long maps/OmegaMap.ber
-#	./so_long maps/maptest.ber
-#	./so_long maps/blackhole.ber
-#	./so_long_bonus maps/blackhole.ber
+	./so_long maps/maptest.ber
+	./so_long maps/blackhole.ber
+	./so_long maps/small.ber
 
 testb: bonus
+	./so_long_bonus maps/OmegaMap.ber
+	./so_long_bonus maps/maptest.ber
+	./so_long_bonus maps/blackhole.ber
 	./so_long_bonus maps/small.ber

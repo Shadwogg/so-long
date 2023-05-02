@@ -6,7 +6,7 @@
 /*   By: ggiboury <ggiboury@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 20:10:56 by ggiboury          #+#    #+#             */
-/*   Updated: 2023/04/26 19:31:30 by ggiboury         ###   ########.fr       */
+/*   Updated: 2023/05/02 20:02:33 by ggiboury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,29 +60,50 @@ t_case	*init_case(char c, int x, int y)
 /**
  * Free the map and print error.
 */
-void	malloc_error_map(t_case ***map, int x, int y)
+void	malloc_error_map(t_case ***map, int y, char **input)
 {
-	int	ct;
-	int	err;
+	int	x;
 
-	err = 0;
-	while (map[y] != NULL)
+	while (map[++y] != NULL)
 	{
-		ct = -1;
-		while (++ct < x && map[y][ct] != NULL)
+		x = -1;
+		while (map[y][++x] != NULL)
 		{
-			err += !case_is_valid(map[y][ct]);
-			if (map[y][ct]->ent != NULL)
-				free(map[y][ct]->ent);
-			free(map[y][ct]);
+			if (map[y][x]->ent != NULL)
+				free(map[y][x]->ent);
+			free(map[y][x]);
 		}
 		free(map[y]);
-		y++;
 	}
 	free(map);
-	if (err == 0)
-		print_error("Malloc error while parsing the map");
-	print_error("Unknown character encouter during the parsing");
+	free_tab_str(input);
+	print_error("Malloc error while parsing the map");
+}
+
+/**
+ * Free the boxes used when there is a box invalid.
+*/
+void	free_boxes(t_case ***map, int x, int b, char **input)
+{
+	int	ct;
+	int	ct2;
+
+	free_tab_str(input);
+	ct = -1;
+	while (map[++ct] != NULL)
+	{
+		ct2 = -1;
+		while (++ct2 < x || map[ct][ct2] != NULL)
+		{
+			if (map[ct][ct2]->ent != NULL)
+				free(map[ct][ct2]->ent);
+			free(map[ct][ct2]);
+		}
+		free(map[ct]);
+	}
+	if (b)
+		print_error("Malloc error.");
+	print_error("Unknown character encouter during the parsing.");
 }
 
 /**
@@ -95,21 +116,21 @@ t_case	***init_map(char **input, int y, int x)
 
 	if (input == NULL || *input == NULL)
 		return (NULL);
-	map = malloc((y + 1) * sizeof(t_case **));
+	map = malloc((y + 1) * sizeof(t_case *));
 	if (map == NULL)
 		free_print_error(input, "Malloc error");
 	map[y--] = NULL;
 	while (y >= 0)
 	{
-		map[y] = malloc((x + 1) * sizeof(t_case **));
+		map[y] = malloc((x + 1) * sizeof(t_case));
 		if (map[y] == NULL)
-			malloc_error_map(map, x, y + 1);
+			malloc_error_map(map, y, input);
 		ct = -1;
 		while (++ct < x)
 		{
 			map[y][ct] = init_case(input[y][ct], ct, y);
 			if (map[y][ct] == NULL || !case_is_valid(map[y][ct]))
-				malloc_error_map(map, x, y);
+				free_boxes(map + y, ct, map[y][ct] == NULL, input);
 		}
 		map[y--][x] = NULL;
 	}
