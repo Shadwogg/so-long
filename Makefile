@@ -6,11 +6,10 @@
 #    By: ggiboury <ggiboury@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/24 18:49:17 by ggiboury          #+#    #+#              #
-#    Updated: 2023/05/02 20:09:55 by ggiboury         ###   ########.fr        #
+#    Updated: 2023/05/03 15:54:18 by ggiboury         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# https://coolors.co/db2b39-29335c-f3a712-f0cea0-534d41
 NAME = so_long
 NAME_BONUS = so_long_bonus
 
@@ -66,7 +65,6 @@ NC=\033[0m
 GREEN=\033[0;32m
 RED=\033[0;31m
 
-#LIBMLX 
 
 all : $(NAME)
 
@@ -115,15 +113,3 @@ fclean : clean
 
 bonus : lib
 	@gcc $(FLAGS) $(SRC_BONUS) -o $(NAME_BONUS) $(LIB) $(HEADERS)
-
-test : $(NAME)
-	./so_long maps/OmegaMap.ber
-	./so_long maps/maptest.ber
-	./so_long maps/blackhole.ber
-	./so_long maps/small.ber
-
-testb: bonus
-	./so_long_bonus maps/OmegaMap.ber
-	./so_long_bonus maps/maptest.ber
-	./so_long_bonus maps/blackhole.ber
-	./so_long_bonus maps/small.ber

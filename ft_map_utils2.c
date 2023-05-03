@@ -6,7 +6,7 @@
 /*   By: ggiboury <ggiboury@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 17:34:21 by ggiboury          #+#    #+#             */
-/*   Updated: 2023/04/19 17:36:38 by ggiboury         ###   ########.fr       */
+/*   Updated: 2023/05/03 11:54:41 by ggiboury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,25 @@ int	is_border_far(t_game *g, t_entity *p, int c[2], char d)
 			&& (p->sprite->instances->y + c[1])
 			- g->map[0][0]->sprite->instances->y > 3 * SIZE_IMG);
 	return (0);
+}
+
+/**
+ * Create and return a new entity.
+*/
+t_entity	*new_entity(char c, int x, int y)
+{
+	t_entity	*ent;
+
+	ent = malloc(sizeof(t_entity));
+	if (ent == NULL)
+	{
+		ft_printf("Error : malloc failed in new_entity");
+		return (NULL);
+	}
+	ent->coo[0] = x * SIZE_IMG;
+	ent->coo[1] = y * SIZE_IMG;
+	ent->life = 1;
+	ent->n = c;
+	ent->next = NULL;
+	return (ent);
 }

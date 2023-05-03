@@ -6,32 +6,11 @@
 /*   By: ggiboury <ggiboury@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 20:10:56 by ggiboury          #+#    #+#             */
-/*   Updated: 2023/05/02 20:02:33 by ggiboury         ###   ########.fr       */
+/*   Updated: 2023/05/03 11:53:41 by ggiboury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-/**
- * Create and return a new entity.
-*/
-t_entity	*new_entity(char c, int x, int y)
-{
-	t_entity	*ent;
-
-	ent = malloc(sizeof(t_entity));
-	if (ent == NULL)
-	{
-		ft_printf("Error : malloc failed in new_entity");
-		return (NULL);
-	}
-	ent->coo[0] = x * SIZE_IMG;
-	ent->coo[1] = y * SIZE_IMG;
-	ent->life = 1;
-	ent->n = c;
-	ent->next = NULL;
-	return (ent);
-}
 
 /**
  * Initialize a case of the board.

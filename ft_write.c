@@ -6,7 +6,7 @@
 /*   By: ggiboury <ggiboury@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 19:36:19 by ggiboury          #+#    #+#             */
-/*   Updated: 2023/05/02 19:59:30 by ggiboury         ###   ########.fr       */
+/*   Updated: 2023/05/03 11:47:06 by ggiboury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 */
 int	print_error(char *s)
 {
-	system("leaks so_long");
 	if (errno == 0)
 		ft_printf("%s\n", s);
 	else
