@@ -6,7 +6,7 @@
 /*   By: ggiboury <ggiboury@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:58:19 by ggiboury          #+#    #+#             */
-/*   Updated: 2023/05/02 20:03:02 by ggiboury         ###   ########.fr       */
+/*   Updated: 2023/07/29 23:17:26 by ggiboury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,12 @@ int	is_enemy(t_entity *ent)
 	if (ent != NULL)
 		return (ent->n == 'M');
 	return (0);
+}
+
+u_int32_t	get_pixel(mlx_image_t *img, unsigned int x, unsigned int y)
+{
+	return (img->pixels[x + (y * img->width)] << 24
+		| img->pixels[(x + (y * img->width)) + 1] << 16
+		| img->pixels[(x + (y * img->width)) + 2] << 8
+		| img->pixels[(x + (y * img->width)) + 3]);
 }

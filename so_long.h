@@ -6,7 +6,7 @@
 /*   By: ggiboury <ggiboury@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 18:43:43 by ggiboury          #+#    #+#             */
-/*   Updated: 2023/05/02 19:37:29 by ggiboury         ###   ########.fr       */
+/*   Updated: 2023/07/29 20:02:20 by ggiboury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ typedef struct s_entity{
 	char			n;
 	struct s_entity	*next;
 	mlx_image_t		*sprite;
+	mlx_image_t		*sprite2;
+	mlx_image_t		*sprite3;
+	mlx_image_t		*sprite4;
 }	t_entity;
 
 // A box

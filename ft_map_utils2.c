@@ -6,7 +6,7 @@
 /*   By: ggiboury <ggiboury@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 17:34:21 by ggiboury          #+#    #+#             */
-/*   Updated: 2023/05/03 11:54:41 by ggiboury         ###   ########.fr       */
+/*   Updated: 2023/07/29 20:03:12 by ggiboury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,9 @@ t_entity	*new_entity(char c, int x, int y)
 	ent->coo[1] = y * SIZE_IMG;
 	ent->life = 1;
 	ent->n = c;
+	ent->sprite2 = NULL;
+	ent->sprite3 = NULL;
+	ent->sprite4 = NULL;
 	ent->next = NULL;
 	return (ent);
 }

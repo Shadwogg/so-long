@@ -6,7 +6,7 @@
 /*   By: ggiboury <ggiboury@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 17:47:13 by ggiboury          #+#    #+#             */
-/*   Updated: 2023/05/02 19:48:23 by ggiboury         ###   ########.fr       */
+/*   Updated: 2023/07/29 23:13:34 by ggiboury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	my_hooks_bonus(void *game)
 		move(g, p);
 		checks_bonus(g, p);
 		update_ct(g, 'M');
+		anime_sprite(g);
 	}
 }
 
@@ -79,7 +80,7 @@ void	checks_bonus(t_game *g, t_entity *player)
 					get_coin_bonus(g, ent);
 				else if (ent->n == 'M')
 				{
-					player->life--;
+					player->life = 0;
 					ft_printf("You got blackholed ;/\n");
 					end(g, player);
 				}
@@ -108,6 +109,7 @@ void	start_bonus(t_case ***map, t_entity *ents)
 	player = get_entity(ents, 'P');
 	render(&game, get_off_x(map, player), get_off_y(map, player));
 	render_panel(&game);
+	prepare_animation(&game, get_off_x(map, player), get_off_y(map, player));
 	mlx_loop_hook(game.mlx, &my_hooks_bonus, &game);
 	mlx_loop(game.mlx);
 	errno = 0;

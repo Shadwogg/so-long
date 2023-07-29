@@ -6,7 +6,7 @@
 /*   By: ggiboury <ggiboury@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 18:26:08 by ggiboury          #+#    #+#             */
-/*   Updated: 2023/04/29 17:46:33 by ggiboury         ###   ########.fr       */
+/*   Updated: 2023/07/29 23:23:38 by ggiboury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,14 @@ void			update_ct(t_game *g, char c);
 void			get_coin_bonus(t_game *g, t_entity *coin);
 int				is_enemy(t_entity *ent);
 void			get_coin_bonus(t_game *g, t_entity *coin);
+u_int32_t		get_pixel(mlx_image_t *img, unsigned int x, unsigned int y);
+void			rotate_img(mlx_image_t *dst, mlx_image_t *src);
+
+/***************************** ANIMATIONS **************************/
+
+void			anime_sprite(t_game *g);
+void			prepare_animation(t_game *game, int o_x, int o_y);
+void			set_next_frame(t_entity *ent);
+void			init_anim(t_entity *ent, t_game *g);
 
 #endif

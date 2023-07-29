@@ -6,7 +6,7 @@
 /*   By: ggiboury <ggiboury@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 17:38:09 by ggiboury          #+#    #+#             */
-/*   Updated: 2023/04/22 19:09:29 by ggiboury         ###   ########.fr       */
+/*   Updated: 2023/07/29 22:42:10 by ggiboury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	itos_get_len(int x)
 {
 	int	size;
 
+	if (x == 0)
+		return (1);
 	size = 0;
 	while (x != 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: ggiboury <ggiboury@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 23:04:21 by ggiboury          #+#    #+#             */
-/*   Updated: 2023/04/29 17:44:31 by ggiboury         ###   ########.fr       */
+/*   Updated: 2023/07/29 23:17:22 by ggiboury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ void	build_entities_bonus(t_game *g)
 		else if (ent->n == 'E')
 			ent->sprite = mlx_texture_to_image(g->mlx, g->textures[4]);
 		else if (ent->n == 'M')
-			ent->sprite = mlx_texture_to_image(g->mlx, g->textures[5]);
+			init_anim(ent, g);
 		else
 			print_error("Undefined error in parsing.");
 		if (ent->sprite == NULL)
